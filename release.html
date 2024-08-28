@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnrealHub - Oyun Yayınla</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <style>
+        /* Ana CSS stilleri buraya gelecek */
+        /* ... */
+        
+        .publish-form {
+            max-width: 600px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1em;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 0.75em;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .submit-button:hover {
+            background-color: #0077aa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Header içeriği buraya gelecek -->
+    </header>
+    
+    <main>
+        <div class="publish-form">
+            <h2>Oyun Yayınla</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="game-title">Oyun Adı</label>
+                    <input type="text" id="game-title" name="game-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="game-description">Oyun Açıklaması</label>
+                    <textarea id="game-description" name="game-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="game-category">Kategori</label>
+                    <select id="game-category" name="game-category" required>
+                        <option value="">Kategori Seçin</option>
+                        <option value="action">Aksiyon</option>
+                        <option value="adventure">Macera</option>
+                        <option value="strategy">Strateji</option>
+                        <option value="simulation">Simülasyon</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="game-file">Oyun Dosyası (.uproject)</label>
+                    <input type="file" id="game-file" name="game-file" accept=".uproject" required>
+                </div>
+                <div class="form-group">
+                    <label for="game-thumbnail">Oyun Küçük Resmi</label>
+                    <input type="file" id="game-thumbnail" name="game-thumbnail" accept="image/*" required>
+                </div>
+                <button type="submit" class="submit-button">Oyunu Yayınla</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer içeriği buraya gelecek -->
+    </footer>
+</body>
+</html>

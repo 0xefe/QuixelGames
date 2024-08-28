@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVerse - Oyun Geliştirme ve Oynama Platformu</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a4af4;
+            --secondary-color: #f0f0f0;
+            --accent-color: #ffd700;
+            --text-color: #333;
+            --background-color: #e9e9e9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1em;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .nav-links, .user-actions {
+            display: flex;
+            gap: 1em;
+        }
+        .nav-links a, .user-actions a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover, .user-actions a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        main {
+            max-width: 1200px;
+            margin: 2em auto;
+            padding: 0 2em;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 2em;
+            border-radius: 10px;
+        }
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2em;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.75em 1.5em;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #e6c200;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2em;
+        }
+        .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .game-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .game-info {
+            padding: 1.5em;
+        }
+        .game-title {
+            margin: 0 0 0.5em 0;
+            font-size: 1.2em;
+        }
+        .game-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 1em;
+        }
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8em;
+            color: #888;
+        }
+        .game-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+        }
+        .play-button, .edit-button {
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .play-button {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .play-button:hover {
+            background-color: #3a3ac4;
+        }
+        .edit-button {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        .edit-button:hover {
+            background-color: #d0d0d0;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 3em 0;
+        }
+        .feature {
+            text-align: center;
+            max-width: 250px;
+        }
+        .feature i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2em;
+            margin-top: 2em;
+        }
+        .social-links {
+            margin-top: 1em;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GameVerse</div>
+            <div class="nav-links">
+                <a href="games.html"><i class="fas fa-gamepad"></i> Oyunlar</a>
+                <a href="release.html"><i class="fas fa-code"></i> Yayınla</a>
+            </div>
+            <div class="user-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Giriş Yap</a>
+                <a href="signing.html"><i class="fas fa-user-plus"></i> Kayıt Ol</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>GameVerse'e Hoş Geldiniz</h1>
+                <p>Oyunları oyna, geliştir ve paylaş - hepsi tek bir platformda!</p>
+                <a href="#" class="cta-button">Hemen Başla</a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Popüler Oyunlar</h2>
+            <div class="game-grid">
+                <div class="game-card">
+                    <img src="/api/placeholder/250/150" alt="Oyun 1">
+                    <div class="game-info">
+                        <h3 class="game-title">Macera Dünyası</h3>
+                        <p class="game-description">Heyecan dolu bir maceraya atıl!</p>
+                        <div class="game-meta">
+                            <span><i class="fas fa-user"></i> CoolDev</span>
+                            <span><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button" onclick="playGame('macera-dunyasi')">Oyna</button>
+                            <button class="edit-button" onclick="editGame('macera-dunyasi')">Düzenle</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <img src="/api/placeholder/250/150" alt="Oyun 2">
+                    <div class="game-info">
+                        <h3 class="game-title">Uzay Savaşları</h3>
+                        <p class="game-description">Galaksiyi koru, düşmanları yen!</p>
+                        <div class="game-meta">
+                            <span><i class="fas fa-user"></i> SpaceGamer</span>
+                            <span><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button" onclick="playGame('uzay-savaslari')">Oyna</button>
+                            <button class="edit-button" onclick="editGame('uzay-savaslari')">Düzenle</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Daha fazla oyun kartı eklenebilir -->
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-code"></i>
+                <h3>Kolay Geliştirme</h3>
+                <p>Unreal Engine ile hızlı ve kolay oyun geliştirin.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Geniş Topluluk</h3>
+                <p>Diğer geliştiricilerle işbirliği yapın ve fikir alışverişinde bulunun.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-coins"></i>
+                <h3>Kazanç Sağlayın</h3>
+                <p>Oyunlarınızı yayınlayın ve gelir elde edin.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GameVerse. Tüm hakları saklıdır.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function playGame(gameId) {
+            // Oyunu başlatma işlemi
+            console.log(`${gameId} oyunu başlatılıyor...`);
+            // Gerçek uygulamada, burada oyunu yükleyecek ve başlatacak kod olacak
+        }
+
+        function editGame(gameId) {
+            // Oyun düzenleme işlemi
+            console.log(`${gameId} oyunu düzenleniyor...`);
+            // Gerçek uygulamada, burada Unreal Engine projesini açacak kod olacak
+        }
+    </script>
+</body>
+</html>
